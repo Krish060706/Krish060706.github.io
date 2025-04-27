@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADS Aviation | Helicopter Maintenance Experts</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --dark-blue: #0a1f3d;
+            --gold: #d4af37;
+            --light-blue: #1a3a6a;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333333;
+        }
+         
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+         
+        body {
+            background-color: var(--white);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+         
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+         
+        /* Header Styles */
+        header {
+            background-color: var(--dark-blue);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+         
+        .logo-img {
+            height: 50px;
+            width: auto;
+            vertical-align: middle; /* Helps align logo better if needed */
+        }
+         
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+         
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+         
+        .nav-links li {
+            margin-left: 30px;
+        }
+         
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+         
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+         
+        /* Hero Section with Photo Background */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 80px; /* Adjust based on header height */
+            overflow: hidden;
+        }
+         
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+         
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(10, 31, 61, 0.7), rgba(10, 31, 61, 0.7));
+            z-index: 0;
+        }
+         
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+         
+        .company-name {
+            font-size: 24px;
+            letter-spacing: 3px;
+            color: var(--gold);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+         
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--gold);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+         
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+         
+        .btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--dark-blue);
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+         
+        .btn:hover {
+            background-color: #e8c252;
+            color: #07162b; /* Slightly darker blue on hover */
+        }
+         
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+         
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark-blue);
+        }
+         
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+         
+        .section-title p {
+            font-size: 18px;
+            color: var(--light-blue);
+            max-width: 600px; /* Constrain width of subtitle */
+            margin-left: auto;
+            margin-right: auto;
+        }
+         
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+         
+        .feature-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+         
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+         
+        .feature-icon {
+            font-size: 50px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+         
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+        }
+
+        .feature-card p {
+             font-size: 16px; /* Ensure consistent font size */
+        }
+         
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+         
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+         
+        .about-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+         
+        .about-image img {
+            width: 100%;
+            height: 100%; /* Make image fill container */
+            object-fit: cover; /* Cover the area without distortion */
+            display: block;
+        }
+         
+        .about-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--dark-blue);
+        }
+         
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+         
+        .founder-note {
+            background-color: var(--light-gray);
+            padding: 30px;
+            border-left: 4px solid var(--gold);
+            margin: 30px 0;
+            border-radius: 0 4px 4px 0; /* Slight rounding */
+        }
+         
+        .founder-note p {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+         
+        .founder-note .signature {
+            font-weight: bold;
+            color: var(--dark-blue);
+            display: block; /* Ensure it takes its own line */
+            text-align: right; /* Align signature to the right */
+        }
+         
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+         
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+         
+        .testimonial-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            display: flex; /* Use flexbox for better structure */
+            flex-direction: column;
+        }
+         
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            flex-grow: 1; /* Allow text to take available space */
+        }
+         
+        .testimonial-text::before {
+            content: '"';
+            font-size: 60px;
+            color: var(--gold);
+            opacity: 0.2; /* Slightly less opaque */
+            position: absolute;
+            top: -25px;
+            left: -15px;
+            z-index: 0;
+        }
+
+        .testimonial-text p {
+             position: relative; /* Ensure text is above quote */
+             z-index: 1;
+        }
+         
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: auto; /* Push author to bottom */
+        }
+         
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+            border: 2px solid var(--light-gray); /* Add subtle border */
+        }
+         
+        .author-info h4 {
+            color: var(--dark-blue);
+            margin-bottom: 3px; /* Reduced margin */
+            font-size: 16px; /* Slightly smaller */
+        }
+         
+        .author-info p {
+            color: var(--light-blue);
+            font-size: 14px;
+        }
+         
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+         
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: flex-start; /* Align items to the top */
+        }
+         
+        .contact-info h3 {
+            font-size: 24px;
+            color: var(--dark-blue);
+            margin-bottom: 20px;
+        }
+         
+        .contact-info p {
+            margin-bottom: 30px;
+        }
+         
+        .contact-details {
+            margin-bottom: 30px;
+        }
+         
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px; /* Increased spacing */
+        }
+         
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--gold);
+            color: var(--dark-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 18px;
+            flex-shrink: 0; /* Prevent icon from shrinking */
+        }
+         .contact-item div {
+             line-height: 1.4; /* Improve readability */
+         }
+         .contact-item h4 {
+             margin-bottom: 4px;
+             color: var(--dark-blue);
+         }
+          .contact-item p {
+             margin-bottom: 0; /* Remove default paragraph margin */
+             color: var(--dark-gray);
+         }
+         
+        .contact-form label { /* Add labels for accessibility */
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: var(--dark-blue);
+            font-size: 14px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 15px; /* Adjusted padding */
+            margin-bottom: 20px;
+            border: 1px solid #ccc; /* Slightly darker border */
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--gold);
+            outline: none; /* Remove default focus outline */
+            box-shadow: 0 0 5px rgba(212, 175, 55, 0.3); /* Subtle glow on focus */
+        }
+         
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+         
+        .contact-form button {
+            background-color: var(--gold);
+            color: var(--dark-blue);
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+         
+        .contact-form button:hover {
+            background-color: #e8c252;
+            color: #07162b;
+        }
+         
+        /* Footer */
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+         
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjusted min width */
+            gap: 40px; /* Increased gap */
+            margin-bottom: 40px;
+        }
+         
+        .footer-column h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 18px; /* Slightly smaller footer headings */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+         
+        .footer-column ul {
+            list-style: none;
+        }
+         
+        .footer-column ul li {
+            margin-bottom: 12px; /* Increased spacing */
+        }
+         
+        .footer-column ul li a {
+            color: #e0e0e0; /* Lighter gray for links */
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 15px;
+        }
+         
+        .footer-column ul li a:hover {
+            color: var(--gold);
+        }
+
+        .footer-column p {
+            color: #e0e0e0;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+         
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px; /* Add space above icons */
+        }
+         
+        .social-links a {
+            color: var(--white);
+            font-size: 24px; /* Larger icons */
+            transition: color 0.3s, transform 0.3s;
+        }
+         
+        .social-links a:hover {
+            color: var(--gold);
+            transform: scale(1.1); /* Slight scale effect on hover */
+        }
+         
+        .copyright {
+            text-align: center;
+            padding-top: 30px; /* Increased padding */
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #a0a0a0; /* Lighter copyright text */
+        }
+         
+        /* Responsive Styles */
+        @media (max-width: 992px) { /* Adjust breakpoint for tablet */
+             .about-content {
+                 gap: 30px; /* Reduce gap */
+             }
+             .about-text h2, .section-title h2 {
+                 font-size: 32px; /* Smaller headings */
+             }
+             .hero h1 {
+                 font-size: 40px;
+             }
+             .hero p {
+                 font-size: 18px;
+             }
+             .contact-container {
+                  gap: 40px;
+             }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Consider implementing a burger menu for mobile */
+            }
+             
+            .hero h1 {
+                font-size: 36px;
+            }
+             
+            .hero p {
+                font-size: 18px;
+            }
+             
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+             
+            .about-image {
+                order: -1; /* Move image above text on smaller screens */
+                margin-bottom: 30px; /* Add space between image and text */
+                 height: 300px; /* Fixed height on mobile */
+            }
+             
+            .logo-img {
+                height: 40px;
+            }
+             
+            .company-name {
+                font-size: 20px;
+            }
+
+            .contact-info {
+                margin-bottom: 40px; /* More space between info and form on mobile */
+            }
+             .features-grid {
+                 grid-template-columns: 1fr; /* Stack features */
+             }
+             .footer-content {
+                 grid-template-columns: 1fr; /* Stack footer columns */
+                 text-align: center;
+             }
+             .footer-column .logo-img {
+                 margin-left: auto;
+                 margin-right: auto; /* Center logo in footer on mobile */
+             }
+              .social-links {
+                 justify-content: center; /* Center social links */
+             }
+              .footer-column ul li a {
+                 font-size: 16px; /* Slightly larger links */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#">
+                    <img src="https://media-hosting.imagekit.io/9a3fb5c3996646c7/logo.png?Expires=1840341424&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=kv4AzvvhJHo~sG~mZjX2WQQwwrtOkA3ccUcj-s2bLTUbHfbtP-JAZwChixFUgLto28caQ1Behhd~otBXV26PzqwyvMYRtM41euHLWx5AG37oYqZhsw4GgjW7WjyA07vOvnmR2ytGw6PE-xqSs5pp8jAeYgW-dcsdwA9beZAnSnciVZGG5GjZi696DcVoMuSXwdnsh-RuKH7Fn2fJ-gjj4KdX7yBltN0dvzUBB5beyAuPVmZ4WPfwmb5ErijReJoDrdQj0DH4KexVN2T3ErPX1meS37BZEouAJF54wg5aeg147QUaiI0DQk4V7sRSU1Le9BzVX2DmaWUI~1TJSscsfQ__" alt="ADS Aviation Logo" class="logo-img">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1661962637716-e29cb0ac15c1?q=80&w=2938&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="company-name">ADS AVIATION</div>
+                <h1>Precision. Expertise. Trust.</h1>
+                <p>20+ Years of Aviation Excellence</p>
+                <a href="#services" class="btn">Explore Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Helicopter Services</h2>
+                <p>Specialized maintenance solutions ensuring safety and reliability for rotary-wing aircraft.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚁</div>
+                    <h3>Helicopter Maintenance</h3>
+                    <p>Comprehensive maintenance, inspections, and repairs for various helicopter models, adhering to strict DGCA standards.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Component Overhaul</h3>
+                    <p>Detailed inspections, precision repairs, and overhaul of critical components including rotor systems and gearboxes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏱️</div>
+                    <h3>AOG Support</h3>
+                    <p>Reliable and rapid Aircraft on Ground (AOG) support to minimize downtime and keep your operations flying.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About ADS Aviation</h2>
+                    <p>ADS Aviation is a premier helicopter maintenance organization founded by Alok Dubey, an experienced Aircraft Maintenance Engineer specializing in rotary-wing aircraft with over 20 years of dedicated, hands-on expertise.</p>
+                     
+                    <div class="founder-note">
+                        <p>"With two decades of specialized experience in helicopter maintenance, I established ADS Aviation to deliver uncompromising safety, precision engineering, and absolute reliability in every aspect of rotary-wing service. Our commitment is to aviation excellence."</p>
+                        <p class="signature">— Alok Dubey, Founder & CEO</p>
+                    </div>
+                     
+                    <h3>Why Partner With Us?</h3>
+                    <p><strong>Unmatched Expertise:</strong> Over 20 years focused solely on helicopter maintenance and engineering challenges.</p>
+                    <p><strong>Fully Certified:</strong> Compliant with all DGCA/ICAO regulations and international safety standards.</p>
+                    <p><strong>Client-Centric:</strong> Tailored maintenance solutions prioritizing safety, quality, and operational efficiency.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1579118559062-39e94a22dbb8?q=80&w=2912&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Helicopter Undergoing Maintenance">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client Testimonials</h2>
+                <p>Hear from helicopter operators who trust ADS Aviation</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>ADS Aviation's team delivered flawless maintenance on our helicopter fleet. Their specialized knowledge of rotary-wing aircraft is unmatched in the industry.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client Rajesh Sharma">
+                        <div class="author-info">
+                            <h4>Rajesh Sharma</h4>
+                            <p>Director, Skyline Helicopters</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>We've relied on Alok and his team for 5+ years. Their reliability and deep technical understanding of complex helicopter systems have been crucial to our operational success.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client Priya Malhotra">
+                        <div class="author-info">
+                            <h4>Priya Malhotra</h4>
+                            <p>CEO, HeliConnect</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>Exceptional service and attention to detail, every single time. ADS Aviation is our go-to partner for all helicopter maintenance requirements.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Client Vikram Patel">
+                        <div class="author-info">
+                            <h4>Vikram Patel</h4>
+                            <p>Operations Manager, RotorWing Aviation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with our helicopter maintenance specialists today</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Discuss Your Helicopter's Needs</h3>
+                    <p>Our dedicated team is ready to provide expert advice and tailored maintenance solutions for your rotary-wing aircraft.</p>
+                     
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div>
+                                <h4>Email</h4>
+                                <p><a href="mailto:ceo@adsaviation.in" style="color: var(--dark-gray); text-decoration: none;">ceo@adsaviation.in</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p><a href="tel:+919892874875" style="color: var(--dark-gray); text-decoration: none;">+91 9892874875</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">🏢</div>
+                            <div>
+                                <h4>Office Address</h4>
+                                <p>Interface Heights, Malad West, Mumbai - 400064, India</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                     <form action="#" method="POST"> <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                       
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                       
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Briefly describe your inquiry">
+                       
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Please provide details about your helicopter or requirements" required></textarea>
+                       
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                     <img src="https://media-hosting.imagekit.io/9a3fb5c3996646c7/logo.png?Expires=1840341424&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=kv4AzvvhJHo~sG~mZjX2WQQwwrtOkA3ccUcj-s2bLTUbHfbtP-JAZwChixFUgLto28caQ1Behhd~otBXV26PzqwyvMYRtM41euHLWx5AG37oYqZhsw4GgjW7WjyA07vOvnmR2ytGw6PE-xqSs5pp8jAeYgW-dcsdwA9beZAnSnciVZGG5GjZi696DcVoMuSXwdnsh-RuKH7Fn2fJ-gjj4KdX7yBltN0dvzUBB5beyAuPVmZ4WPfwmb5ErijReJoDrdQj0DH4KexVN2T3ErPX1meS37BZEouAJF54wg5aeg147QUaiI0DQk4V7sRSU1Le9BzVX2DmaWUI~1TJSscsfQ__" alt="ADS Aviation Logo" class="logo-img" style="margin-bottom: 20px; height: 45px;">
+                    <p>Specializing in expert helicopter maintenance with over 20 years of experience in rotary-wing aircraft safety and reliability.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Our Services</a></li>
+                        <li><a href="#testimonials">Client Testimonials</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Core Services</h3>
+                    <ul>
+                        <li><a href="#services">Helicopter Maintenance</a></li>
+                        <li><a href="#services">Component Overhaul</a></li>
+                        <li><a href="#services">Rotor System Inspections</a></li>
+                        <li><a href="#services">Avionics Support</a></li>
+                        <li><a href="#services">AOG Response</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                     <p style="margin-bottom: 15px;">Follow us or get in touch:</p>
+                    <div class="social-links">
+                         <a href="#" title="Phone"><span role="img" aria-label="Phone">📱</span></a>
+                        <a href="#" title="LinkedIn"><span role="img" aria-label="LinkedIn">💼</span></a>
+                        <a href="mailto:ceo@adsaviation.in" title="Email"><span role="img" aria-label="Email">📧</span></a>
+                        <a href="#services" title="Services"><span role="img" aria-label="Helicopter">🚁</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                 <p>&copy; <span id="current-year"></span> ADS Aviation. All Rights Reserved. | Designed by Alok Dubey</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+      // Simple script to update copyright year automatically
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
